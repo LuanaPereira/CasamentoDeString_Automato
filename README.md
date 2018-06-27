@@ -1,0 +1,1 @@
+# CasamentoDeString_Automato
