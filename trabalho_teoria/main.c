@@ -2,13 +2,9 @@
 #include <stdlib.h>
 char alfabeto[26] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
-int testar_prefixo(char palavra[]){
+int testar_prefixo(char palavra[], char prefixo[]){
     int tamanho_palavra=0, contador=0, contador_prefixo=0;
     int a, b, resultado=0;
-    char prefixo[50];
-    printf("Digite o prefixo: \n");
-    scanf("%s", &prefixo);
-
     while (palavra[tamanho_palavra] != '\0' ){
         tamanho_palavra++;
     }
@@ -40,14 +36,10 @@ int testar_prefixo(char palavra[]){
     }
     return 1;
 }
-int testar_sufixo(char palavra[]){
-    char sufixo[50];
+int testar_sufixo(char palavra[], char sufixo[]){
     int tamanho_palavra=0, contador=0, contador_sufixo=0;
     int a, b, resultado=0;
     int teste = 0;
-
-    printf("Digite o sufixo: \n");
-    scanf("%s", &sufixo);
 
     while (palavra[tamanho_palavra]!='\0'){
         tamanho_palavra++;
@@ -81,12 +73,9 @@ int testar_sufixo(char palavra[]){
     }
     return 1;
 }
-int testar_subpalavra(char palavra[]){
+int testar_subpalavra(char palavra[], char subpalavra[]){
     int tamanho_palavra=0, contador=0, contador_subpalavra=0;
     int a, b=0, resultado=0;
-    char subpalavra[50];
-    printf("Digite a subpalavra: \n");
-    scanf("%s", &subpalavra);
 
     while (palavra[tamanho_palavra]!='\0'){
         tamanho_palavra++;
@@ -129,7 +118,7 @@ int testar_subpalavra(char palavra[]){
     }
 }
 int main(){
-    char palavra[50];
+    char palavra[50], verificacao[50];
     int x;
     while (1){
         printf("1 para funcao prefixo \n2 para funcao sufixo \n3 para funcao subpalavra\n\n");
@@ -137,16 +126,19 @@ int main(){
         scanf("%d", &x);
         printf("\nDigite a palavra: \n");
         scanf("%s", &palavra);
+        printf("Digite a palavra para a verificacao: \n");
+        scanf("%s", &verificacao);
+
 
         switch (x){
         case 1:
-            testar_prefixo(&palavra);
+            testar_prefixo(&palavra, &verificacao);
             break;
         case 2:
-           testar_sufixo(&palavra);
+           testar_sufixo(&palavra, &verificacao);
             break;
         case 3:
-            testar_subpalavra(&palavra);
+            testar_subpalavra(&palavra, &verificacao);
             break;
         default:
             printf("\nEscolha a funcao novamente, opcao nao aceita! \n");
